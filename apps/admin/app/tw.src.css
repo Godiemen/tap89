@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Mono:wght@400;500&family=Public+Sans:wght@400;500;600;700;800&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #f2f2ef;
+  --color-card: #ffffff;
+  --color-ink: #0b0b0b;
+  --color-lime: #d7ff64;
+  --color-deep: #090909;
+  --color-panel: #111111;
+  --color-secondary: #eeeeeb;
+  --color-mute: #e5e5e1;
+  --color-sub: #686864;
+  --color-border: #d4d4cf;
+  --color-inputbg: #f5f5f2;
+  --color-strip: #f4f4f1;
+  --color-rowhl: #f4f7eb;
+  --color-leaf: #276a3e;
+  --color-olive: #4d6430;
+  --color-moss: #90bf2f;
+  --color-coral: #ff5b3d;
+  --color-amber2: #ffad62;
+  --color-wine: #d4183d;
+  --font-display: "Archivo Black", sans-serif;
+  --font-sans: "Public Sans", sans-serif;
+  --font-mono: "DM Mono", monospace;
+}
+
+@layer base {
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-bg);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  ::selection {
+    background: var(--color-lime);
+    color: var(--color-ink);
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #c2c2bc;
+    border-radius: 4px;
+  }
+}
+@source "../src";
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}

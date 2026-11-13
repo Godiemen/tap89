@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Roboto+Slab:wght@500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #f7f4ec;
+  --color-card: #fffefa;
+  --color-ink: #1e241f;
+  --color-primary: #173c2a;
+  --color-deep: #10261b;
+  --color-lime: #c6ff47;
+  --color-secondary: #eeece4;
+  --color-muted: #e7e4da;
+  --color-sub: #71776f;
+  --color-border: #dcd8ce;
+  --color-inputbg: #f0eee8;
+  --color-harvest: #ffca3a;
+  --color-harvest-ink: #211d13;
+  --color-sage: #d8e9db;
+  --color-sage-ink: #173922;
+  --color-ready: #183c2a;
+  --color-coral: #f07c50;
+  --color-alert: #ef5f3c;
+  --color-priority: #fff0cc;
+  --color-priority-ink: #7b4e00;
+  --color-pos: #447a29;
+  --color-neg: #a3442a;
+  --color-ring: #557936;
+  --color-leaf: #4e7c21;
+  --color-wine: #d4183d;
+  --font-display: "Roboto Slab", serif;
+  --font-sans: "DM Sans", sans-serif;
+  --font-mono: "DM Mono", monospace;
+}
+
+@layer base {
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-bg);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  ::selection {
+    background: var(--color-lime);
+    color: var(--color-deep);
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #c9c5b8;
+    border-radius: 4px;
+  }
+}
+@source "../src";
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}

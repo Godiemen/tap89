@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #fffaf4;
+  --color-ink: #1b1526;
+  --color-grape: #6e38ee;
+  --color-gold: #ffd45c;
+  --color-stone: #f0ebe4;
+  --color-sand: #e9e4dc;
+  --color-peach: #ffb8a4;
+  --color-mist: #6f6977;
+  --color-wine: #d4183d;
+  --font-display: "Anton", sans-serif;
+  --font-sans: "DM Sans", sans-serif;
+  --font-mono: "DM Mono", monospace;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-cream);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer base {
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+input::placeholder {
+  color: #8b8496;
+}
+
+::selection {
+  background: var(--color-gold);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #d5d0c8;
+  border-radius: 4px;
+}
+@source "../src";

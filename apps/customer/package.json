@@ -1,0 +1,31 @@
+{
+  "name": "@sipdash/customer",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "css": "tailwindcss -i app/tw.src.css -o app/globals.css",
+    "css:watch": "tailwindcss -i app/tw.src.css -o app/globals.css --watch",
+    "dev": "npm run css && next dev -p 3001",
+    "build": "npm run css && next build",
+    "start": "next start -p 3001"
+  },
+  "dependencies": {
+    "@sipdash/core": "*",
+    "@sipdash/ui": "*",
+    "@tailwindcss/cli": "^4.3.5",
+    "@tailwindcss/postcss": "^4.3.5",
+    "leaflet": "^1.9.4",
+    "lucide-react": "^1.72.0",
+    "motion": "^14.12.0",
+    "next": "16.4.6",
+    "postcss": "^8.5.32",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-leaflet": "^5.0.0",
+    "tailwindcss": "^4.3.5",
+    "zustand": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/leaflet": "^1.9.22"
+  }
+}

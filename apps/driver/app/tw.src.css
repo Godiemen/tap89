@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #fffaf4;
+  --color-ink: #1b1526;
+  --color-ink2: #241d33;
+  --color-ink3: #2f2645;
+  --color-grape: #6e38ee;
+  --color-gold: #ffd45c;
+  --color-stone: #f0ebe4;
+  --color-sand: #e9e4dc;
+  --color-peach: #ffb8a4;
+  --color-mist: #6f6977;
+  --color-mist2: #9c94ab;
+  --color-wine: #d4183d;
+  --color-mint: #4ade80;
+  --font-display: "Anton", sans-serif;
+  --font-sans: "DM Sans", sans-serif;
+  --font-mono: "DM Mono", monospace;
+}
+
+@layer base {
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-cream);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer base {
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #d8d2e6;
+  border-radius: 4px;
+}
+}
+@source "../src";
+
+/* ---------------- Leaflet + custom markers ---------------- */
+.leaflet-container {
+  font-family: var(--font-sans);
+  background: var(--color-ink);
+}
+.leaflet-pane,
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 400;
+}
+
+/* divIcon base reset (leaflet gives white bg + border) */
+.sd-icon.leaflet-div-icon {
+  background: transparent;
+  border: none;
+}
+
+/* courier dot: soft pulsing ring + glowing blue dot + heading arrow */
+.courier-marker {
+  transition: transform 700ms linear;
+}
+.sd-dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  background: #4c8dff;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 3px rgba(76, 141, 255, 0.35), 0 0 14px rgba(76, 141, 255, 0.9);
+}
+.sd-pulse {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  background: rgba(76, 141, 255, 0.45);
+  animation: sd-pulse 2s ease-out infinite;
+}
+.sd-heading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 10px solid #4c8dff;
+  transform-origin: 50% 140%;
+  filter: drop-shadow(0 0 3px rgba(76, 141, 255, 0.8));
+}
+@keyframes sd-pulse {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(3.4); opacity: 0; }
+}
+
+/* pickup / dropoff pins */
+.sd-pin {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.55), 0 0 0 3px rgba(0, 0, 0, 0.25);
+}
+.sd-pin-pickup { background: #ffd45c; box-shadow: 0 4px 14px rgba(0,0,0,.55), 0 0 16px rgba(255,212,92,.45); }
+.sd-pin-dropoff {
+  background: #1b1526;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.45), 0 0 0 2px #fff;
+}
+
+/* surge zone label pill */
+.sd-surge-pill {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 9999px;
+  background: rgba(255, 212, 92, 0.92);
+  color: #1b1526;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  box-shadow: 0 0 14px rgba(255, 212, 92, 0.5);
+  white-space: nowrap;
+}
+
+/* soften OSM tiles to a clean Uber-like light map */
+.leaflet-tile-pane {
+  filter: saturate(0.85) contrast(0.95) brightness(1.03);
+}
+
+/* surge heat blobs — soft blurred gradients, no outline */
+.surge-blob {
+  stroke: none;
+}
+.surge-blob-outer { filter: blur(26px); }
+.surge-blob-inner { filter: blur(14px); }
+
+/* GO button glow pulse */
+@keyframes go-glow {
+  0%, 100% { box-shadow: 0 6px 24px rgba(255,211,90,.45), 0 0 0 0 rgba(255,211,90,.5); }
+  50% { box-shadow: 0 6px 24px rgba(255,211,90,.45), 0 0 0 14px rgba(255,211,90,0); }
+}
+.go-glow { animation: go-glow 2.4s ease-in-out infinite; }
+
+/* tabular numerals for money/ETA */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sd-pulse { animation: none; }
+  .go-glow { animation: none; }
+  .courier-marker { transition: none; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
